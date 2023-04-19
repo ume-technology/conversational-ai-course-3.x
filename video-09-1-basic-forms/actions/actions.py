@@ -8,16 +8,17 @@ from rasa_sdk.types import DomainDict
 ALLOWED_PIZZA_SIZES = ["small", "medium", "large", "extra-large", "extra large", "s", "m", "l", "xl"]
 ALLOWED_PIZZA_TYPES = ["mozzarella", "fungi", "veggie", "pepperoni", "hawaii"]
 
+
 class ValidateSimplePizzaForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_simple_pizza_form"
 
     def validate_pizza_size(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `pizza_size` value."""
 
@@ -28,13 +29,13 @@ class ValidateSimplePizzaForm(FormValidationAction):
         return {"pizza_size": slot_value}
 
     def validate_pizza_type(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
     ) -> Dict[Text, Any]:
-        """Validate `pizza_type` value."""
+        """ Validate `pizza_type` value."""
 
         if slot_value not in ALLOWED_PIZZA_TYPES:
             dispatcher.utter_message(text=f"I don't recognize that pizza. We serve {'/'.join(ALLOWED_PIZZA_TYPES)}.")
